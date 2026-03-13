@@ -1,0 +1,149 @@
+/* 1. Variables y Reset */
+:root {
+    --primary-color: #0071e3; /* Azul eléctrico tecnológico */
+    --bg-dark: #0a0a0b;       /* Negro industrial */
+    --text-light: #f5f5f7;    /* Blanco suavizado */
+    --accent-gradient: linear-gradient(-45deg, #0071e3, #00d4ff, #002d5a, #0a0a0b);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* 2. Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background: rgba(10, 10, 11, 0.8);
+    backdrop-filter: blur(10px); /* Efecto de cristal esmerilado */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--primary-color);
+}
+
+/* 3. Hero Section con Animación */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 80vh;
+    padding: 0 5%;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    max-width: 600px;
+}
+
+/* El efecto que ya conoces aplicado al contenedor de imagen */
+.image-container {
+    position: relative;
+    width: 500px;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-gradient);
+    background-size: 400% 400%;
+    mix-blend-mode: overlay; /* Esto permite que la imagen se vea a través del degradado */
+    animation: gradientAnimation 8s ease infinite;
+    z-index: 1;
+}
+
+/* Animación de movimiento */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.gallery-section {
+    padding: 4rem 5%;
+    background-color: #0d0d0e; /* Un tono ligeramente distinto para separar secciones */
+}
+
+.gallery-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Se ajusta solo según el ancho */
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Efecto al pasar el mouse */
+.gallery-item:hover img {
+    transform: scale(1.1); /* Zoom suave */
+    filter: brightness(1.2); /* Un toque de luz */
+}
